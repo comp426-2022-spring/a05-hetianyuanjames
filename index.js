@@ -5,7 +5,7 @@ const minimist = require('minimist')
 const app = express()
 const fs = require('fs')
 const db = require("./src/services/database.js")
-// const res = require('express/lib/response')
+const res = require('express/lib/response')
 
 const args = minimist(process.argv.slice(2))
 args["help", "port", "debug", "log"]

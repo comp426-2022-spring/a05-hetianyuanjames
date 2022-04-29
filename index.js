@@ -27,7 +27,6 @@ if (args.help || args.h) {
     process.exit(0)
 }
 
-// port default to 5555
 const port = args.port || process.env.PORT || 5000;
 const log = (args.log != "false");
 
@@ -39,7 +38,7 @@ const server = app.listen(port, () => {
     console.log('App is running on port %PORT%'.replace('%PORT%', port))
 })
 
-//Log user interaction to database
+
 if (log == true) {
     const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' });
     app.use(morgan('combined', { stream: WRITESTREAM }));
@@ -95,6 +94,7 @@ function flipACoin(call) {
 }
 
 
+// endpoint
 app.get('/app/', (req, res) => {
     res.contentType('application/json');
     res.status(200).json({message: "Your API works! (200)"});

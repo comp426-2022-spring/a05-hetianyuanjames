@@ -5,7 +5,7 @@ const minimist = require('minimist')
 const app = express()
 const fs = require('fs')
 const db = require("./src/services/database.js")
-const res = require('express/lib/response')
+// const res = require('express/lib/response')
 
 const args = minimist(process.argv.slice(2))
 args["help", "port", "debug", "log"]
@@ -30,16 +30,15 @@ if (args.help || args.h) {
 
 // port default to 5555
 const port = args.port || process.env.PORT || 5000;
-// const debug = (args.debug == "true");
 const log = (args.log != "false");
 
 app.use(express.json())
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }))
 
-const server = app.listen(port, () => {
-    console.log('App is running on port %PORT%'.replace('%PORT%', port))
-})
+// const server = app.listen(port, () => {
+//     console.log('App is running on port %PORT%'.replace('%PORT%', port))
+// })
 
 //Log user interaction to database
 if (log == true) {

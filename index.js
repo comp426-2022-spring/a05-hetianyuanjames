@@ -30,7 +30,7 @@ if (args.help || args.h) {
 
 // port default to 5555
 const port = args.port || process.env.PORT || 5000;
-const debug = (args.debug == "true");
+// const debug = (args.debug == "true");
 const log = (args.log != "false");
 
 app.use(express.json())
@@ -96,23 +96,6 @@ function flipACoin(call) {
     return {call: call, flip: flip, result: flip == call ? "win" : "lose" };
 }
 
-// Endpoints
-
-// if (!debug) {
-//     app.get("/app/log/access", (req, res) => {
-//         try {
-//             const stmt = db.prepare('SELECT * FROM accesslog').all()
-//             res.contentType('application/json');
-//             res.status(200).json(stmt)
-//         } catch(e) {
-//             console.error(e)
-//         }
-//     })
-//     app.get("/app/error", (req, res) => {
-//         res.contentType('error');
-//         throw new Error('Error')
-//     })
-// }
 
 app.get('/app/', (req, res) => {
     res.contentType('application/json');
